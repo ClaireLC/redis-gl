@@ -23,7 +23,7 @@ export function create(model, loadCallback) {
 		Graphics.parse(graphicsStruct, object, promises);
 	});
 	const axis_size = "axis_size" in model ? model["axis_size"] : AXIS_SIZE;
-	object.add(Graphics.axes(axis_size, AXIS_WIDTH));
+	//object.add(Graphics.axes(axis_size, AXIS_WIDTH));
 
 
 	Promise.all(promises).then(() => loadCallback(object));

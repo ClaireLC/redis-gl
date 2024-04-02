@@ -172,7 +172,7 @@ export function parse(graphicsStruct, body, promises) {
 		let sphere;
 		// if (body.children.length === 0) {
 		let geometry = new THREE.SphereGeometry(1, 16, 16);
-		let material = new THREE.MeshNormalMaterial();
+		let material = new THREE.MeshBasicMaterial();
 		material.transparent = true;
 		sphere = new THREE.Mesh(geometry, material);
 		body.add(sphere);
@@ -184,6 +184,12 @@ export function parse(graphicsStruct, body, promises) {
 		//   }
 		// }
 
+		const color = new THREE.Color(
+			materialStruct["rgba"][0],
+			materialStruct["rgba"][1],
+			materialStruct["rgba"][2],
+		);
+		sphere.material.color = color;
 		sphere.material.opacity = materialStruct["rgba"][3];
 		sphere.material.needsUpdate = true;
 		const T_to_parent = graphicsStruct["T_to_parent"];
